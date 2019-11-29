@@ -1,17 +1,34 @@
 //jshint esversion: 6
 
+
+class Product {
+    title = 'DEFAULT';
+    imageUrl;
+    description;
+    price;
+
+    constructor(title, image, desc, price) {
+        this.title = title;
+        this.image = image;
+        this.description = desc;
+        this.price = price;
+    }
+}
 const productList = {
-    products: [{
-        title: 'A sofa',
-        imageUrl: 'https://m.media-amazon.com/images/I/91VMNtOVYpL._SR400,500_.jpg',
-        price: 143.99,
-        description: 'Cosy living room sofa'
-    },{
-        title: 'A carpet',
-        imageUrl: 'https://images-eu.ssl-images-amazon.com/images/G/31/acs/amazon-designer/2017/07/28/DURM-56D2B2BA5E4C72EJ.jpeg',
-        price: 89.99,
-        description: 'A nice looking carpet'
-    }],
+    products: [
+        new Product(
+        'A sofa',
+         'https://m.media-amazon.com/images/I/91VMNtOVYpL._SR400,500_.jpg',
+         143.99,
+        'Cosy living room sofa'
+        ),
+        new Product(
+        'A carpet',
+        'https://images-eu.ssl-images-amazon.com/images/G/31/acs/amazon-designer/2017/07/28/DURM-56D2B2BA5E4C72EJ.jpeg',
+        89.99,
+        'A nice looking carpet'
+        )
+    ],
     render() {  
           const renderHook = document.getElementById('app');
           const prodList = document.createElement('ul');
