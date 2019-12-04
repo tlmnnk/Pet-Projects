@@ -87,3 +87,34 @@ body {
     flex-shrink: 0;
     cursor: pointer;
 }
+
+.container__cart {
+    position: relative;
+    margin: auto;
+    position: fixed;
+    width: 97%;
+    height: 97vh;
+    display: none;
+    align-items: flex-start;
+    background: #fff;
+    box-shadow: 
+    0 16px 24px 2px rgba(33,37,41,.02),
+    0 6px 30px 5px rgba(33,37,41,.04),
+    0 8px 10px -5px rgba(33,37,41,.1);
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.cart__close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 35px;
+    height: 35px;
+    background-image: url('img/close.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    cursor: pointer;
+}

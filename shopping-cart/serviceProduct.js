@@ -35,11 +35,12 @@ class ServiceProducts {
                 activeText = 'Удалить из корзины';
             }
 
-            const item = this.getElement({tagName: 'div', className: 'item'});
-            const name = this.getElement({tagName: 'div', className: 'item__title', innerText: this.productCatalog[i].name});
-            const image = this.getElement({tagName: 'div', className: 'item__img', backgroundImage: `url(${this.productCatalog[i].img}`});
-            const price = this.getElement({tagName: 'div', className: 'item__price', innerText: this.productCatalog[i].price});
-            const btn = this.getElement({tagName: 'button', className: 'item__btn' + activeClass, innerText: activeText, id: this.productCatalog[i].id});
+        
+            const item = serviceCreateElement.getElement({tagName: 'div', className: 'item'});
+            const name = serviceCreateElement.getElement({tagName: 'div', className: 'item__title', innerText: this.productCatalog[i].name});
+            const image = serviceCreateElement.getElement({tagName: 'div', className: 'item__img', backgroundImage: `url(${this.productCatalog[i].img}`});
+            const price = serviceCreateElement.getElement({tagName: 'div', className: 'item__price', innerText: this.productCatalog[i].price});
+            const btn = serviceCreateElement.getElement({tagName: 'button', className: 'item__btn' + activeClass, innerText: activeText, id: this.productCatalog[i].id});
 
             btn.addEventListener('click', function() {
               const id = this.getAttribute('data-id');
@@ -69,25 +70,7 @@ class ServiceProducts {
 
    
 
-    getElement(options) {
-
-        const element = document.createElement(options.tagName);
-
-        if('className' in options) {element.setAttribute('class', options.className);}
-
-        if('innerText' in options) {element.innerText = options.innerText;}
-
-        if('backgroundImage' in options) {element.style.backgroundImage = options.backgroundImage;}
-
-        if('id' in options) {element.setAttribute('data-id', options.id);}
-
-        return element;
-        
-         /*  const item =  ocument.createElement( options.tagName)
-          item.setAttribute('class', options.className)
-
-          return item; */
-    }
+   
 
     actions(){
 
