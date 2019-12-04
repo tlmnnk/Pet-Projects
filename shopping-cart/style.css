@@ -8,6 +8,9 @@ body {
     font-family: sans-serif;
     line-height: 1.7;
     background: #f8f9fa;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .container-products {
@@ -16,13 +19,14 @@ body {
 }
 
 .item {
+    margin: 20px;
+    padding: 15px 20px;
+    width: 250px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     
-    margin: 20px;
-    padding: 15px 20px;
-    width: 250px;
     border-radius: .25rem;
     box-shadow: 
                 0 16px 24px 2px rgba(33,37,41,.02),
@@ -35,8 +39,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
 }
-.item__img {
-    
+.item__img {   
     height: 200px;
     background-position: top center;
     background-size: cover;
@@ -53,9 +56,34 @@ body {
     padding: 10px 15px;
     font-family: inherit;
     font-size: inherit;
+
+    background: 0;
     border: 1px solid grey;
     border-radius: 3px;
     outline: none;
-    background: 0;
+    cursor: pointer;
+}
+
+.item__btn--active {
+    border: 1 solid transparent;
+    background-image: linear-gradient(to right bottom, #ffff1f, #ddff00, #b5ff00, #83ff00, #2cff00);
+}
+
+.container__counter {
+    margin: 20px;
+    width: 60px;
+    height: 60px;
+    font-weight: bold;
+    color: #224e96;
+
+    background-image: url('img/discount.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
     cursor: pointer;
 }
