@@ -1,0 +1,55 @@
+body {
+    background: #84ffff ;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 50%;
+    background: cornsilk;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.promo__input {
+    margin: 20px auto;
+    height: 45px;
+    width: 450px;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #ffeb3b;
+    position: relative;
+    caret-color: blue;
+    transition: border linear .3s;
+    z-index: 1;
+}
+
+.promo__input::placeholder{
+    font-size: 1rem;
+    font-weight: 100;
+    font-style: italic;
+    color: grey;
+}
+
+.promo__send {
+    padding: 12px 30px;
+    font-size: 1.4rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.promo__message {
+    margin: 20px;
+    min-height: 50px;
+    font-size: 1.7rem;
+}
