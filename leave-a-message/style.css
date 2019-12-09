@@ -41,6 +41,7 @@ body {
 
 .promo__send {
     padding: 12px 30px;
+    font-family: monospace;
     font-size: 1.4rem;
     border-radius: 10px;
     border: none;
