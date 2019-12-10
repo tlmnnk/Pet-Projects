@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     buttonSend.addEventListener('click', function() {
-      message.innerHTML = input.value;
-      localStorage.setItem('lastMessage', input.value);
-      input.value = '';
+
+      if(input.value === '') {
+        alert('Please, do not leave empty message')
+      } else {
+        message.innerHTML = input.value;
+        localStorage.setItem('lastMessage', input.value);
+        input.value = '';
+      }
     });
 
     buttonErase.addEventListener('click', function() {
