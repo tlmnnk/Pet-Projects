@@ -3,15 +3,24 @@
 document.addEventListener('DOMContentLoaded', function() {
     let input  = document.querySelector('.promo__input');
     let message = document.querySelector('.promo__message');
-    const button = document.querySelector('.promo__send');
+    const buttonSend = document.querySelector('.send');
+    const buttonErase = document.querySelector('.erase');
     message.innerHTML = localStorage.getItem('lastMessage');
 
 
-    button.addEventListener('click', function() {
+    buttonSend.addEventListener('click', function() {
       message.innerHTML = input.value;
       localStorage.setItem('lastMessage', input.value);
       input.value = '';
     });
+
+    buttonErase.addEventListener('click', function() {
+      setTimeout(emptyMessage, 3000);
+    });
+
+    function emptyMessage() {
+      message.innerHTML = '';
+    }
    
 });
 
