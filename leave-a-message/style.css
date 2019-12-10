@@ -1,5 +1,5 @@
 body {
-    background: #84ffff ;
+    background: #80deea ;
     height: 90vh;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@ body {
 
 .container {
     width: 50%;
-    background: cornsilk;
+    background: #b4ffff;
     text-align: center;
     border-radius: 15px;
 }
@@ -54,5 +54,5 @@ body {
     min-height: 50px;
     font-family: sans-serif;
     font-size: 1.9rem;
-    color: #84ffff ;
+    color: #80deea ;
 }
