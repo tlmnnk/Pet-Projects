@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url('img/bg.jpg') top;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__avatar {
+    width: 100px;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+
+}
+
+.form {
+    padding: 80px 40px 40px;
+    width: 100%;
+    max-width: 380px;
+    position: relative;
+    background: rgba(0, 0, 0, .7);
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+}
+
+.form h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #ff652f;
+}
+
+.form:before {
+    content: '';
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, .08);
+    transform: skewX(-36deg);
+    transform-origin: bottom left;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.input__section {
+    position: relative;
+}
+.input__section input {
+    margin-bottom: 30px;
+    padding: 10px 0;
+    width: 100%;
+    font-size: 1rem;
+    color: inherit;
+    letter-spacing: 1px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background-color: transparent;
+}
+
+.input__section label {
+    padding: 10px 0;
+    font-size: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: .3s ease-out;
+}
+.input__section input:focus + label, .input__section input:valid + label {
+    transform: translateY(-18px);
+    font-size: .8rem;
+    color: #ff652f;
+}
+
+.form__submit {
+    margin-left: auto;
+    padding: 10px 20px;
+    display: block;
+    letter-spacing: 1px;
+    background: #ff652f;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__forgot {
+    color: inherit;
+}
+
+#forgot-pw {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: 1;
+    background: #fff;
+    opacity: 0;
+    transition: .6s;
+}
+
+#forgot-pw:target {
+    height: 100%;
+    opacity: 1;
+}
+
+.form__close {
+    font-size: 2rem;
+    font-weight: 900;
+    color: inherit;
+    position: absolute;
+    right: 1rem;
+    top: .5rem;
+    text-decoration: none;
+}

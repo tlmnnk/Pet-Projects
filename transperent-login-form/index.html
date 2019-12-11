@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form">
+            <img class="form__avatar" src="img/avatar.svg" alt="">
+            <h2>Login</h2>
+            <div class="input__section">
+                <input type="text" name="loginUser" id="loginUser" requred>
+                <label for="loginUser">User name</label>
+            </div>
+            <div class="input__section">
+                <input type="password" name="passwordUser" id="passwrodUser" requred>
+                <label for="passwordUser">password</label>
+            </div>
+            <input type="submit" class="form__submit" value="Login">
+            <a href="#forgot-pw" class="form__forgot">Forgot password?</a>
+        </form>
+
+        <div id="forgot-pw">
+            <form class="form">
+                <a href="#" class="form__close">&times;</a>
+                <h2>Reset password</h2>
+                <div class="input__section">
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <input type="submit" class="form__submit" value="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
