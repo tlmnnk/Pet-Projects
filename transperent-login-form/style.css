@@ -52,7 +52,7 @@ body {
     top: 0;
     left: 0;
     background: rgba(255, 255, 255, .08);
-    transform: skewX(-36deg);
+    transform: skewX(-26deg);
     transform-origin: bottom left;
     border-radius: 10px;
     pointer-events: none;
