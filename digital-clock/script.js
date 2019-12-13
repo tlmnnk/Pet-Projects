@@ -1,40 +1,30 @@
 //jshint esversion: 6
 
-document.addEventListener('DOMContentLoaded', function() {
 
-    const container = document.querySelector('.container');
+    const clock = document.querySelector('.clock');
 
-    const date = new Date();
-    let hour = date.getHours();
-    let minutes = date.getMinutes();
-    let seconds = date.getSeconds();
-
-    zeroSecondsCheck();
-   
-
-    function zeroSecondsCheck() {
-        if(seconds < 10) {
-            container.innerHTML = hour + ':' + minutes +':0' + seconds;}
-        else {
-            container.innerHTML = hour + ':' + minutes +':' + seconds;}
+    function addZero(time) {
+        if(time < 10) {
+            time = '0' + time;
         }
+        return time;
+    }
+    
+    function showTime() {
+        const date = new Date();
+        let hour = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+    
+        hour = addZero(hour);
+        minutes = addZero(minutes);
+        seconds = addZero(seconds);
+    
+        clock.innerHTML = `${hour}:${minutes}:${seconds}`;
+    }
+    showTime();
+
 
     setInterval(() => {
-        seconds++;
-        zeroSecondsCheck();
-
-        if(seconds > 59) {
-            seconds = 0;
-            minutes++;
-        }
-        if(minutes > 59) {
-            minutes = 0;
-            hour++;
-        }
-        if(hour > 23) {
-            hour = 0;
-        }
-        zeroSecondsCheck();
-        
+        showTime();
     }, 1000);
-});
