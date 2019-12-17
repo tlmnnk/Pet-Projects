@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+   
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #462974;
+    color: #fff;
+    font-style: italic;
+}
+
+h1 {font-size: 4rem;}
+
+.timer {
+    display: block;
+    font-family: monospace;
+    font-size: 5rem;
+}
