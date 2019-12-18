@@ -49,18 +49,17 @@ const tasks = [
 
       renderAllTasks(objOfTasks);
       form.addEventListener('submit', onFormSubmit);
+      listContainer.addEventListener('click', onDeleteHandler);
 
       function renderAllTasks(tasksList) {
             if(!tasksList) {
                 console.error('Передайте список задач');
+                ifNoTaskLeft(tasksList);
                 return;}
 
          const fragment = document.createDocumentFragment(); 
-         console.log(Object.values(tasksList));
             
-            Object.values(tasksList).forEach(task => {
-                console.log(task);
-                
+            Object.values(tasksList).forEach(task => {                
                 const li = listItemTemplate(task);
                 fragment.appendChild(li);
             });
@@ -75,6 +74,7 @@ const tasks = [
                 'align-items-center',
                 'flex-wrap',
                 'mt-2');
+          li.setAttribute('data-task-id', _id);
           const span = document.createElement('span');
           span.textContent = title;
           span.style.fontWeight = 'bold';
@@ -94,22 +94,12 @@ const tasks = [
               'ml-auto',
               'delete-btn');
 
-        deleteBtn.addEventListener('click', deleteTask);
-
         li.appendChild(span);
         li.appendChild(deleteBtn);
         li.appendChild(article);
-        console.log(li);
         
         return li;
       }
-
-    function deleteTask(e) {
-        e.preventDefault();
-        this.parentNode.remove();
-        
-    }
-      
 
       function onFormSubmit(e){
           e.preventDefault();
@@ -136,9 +126,47 @@ const tasks = [
             };
 
             objOfTasks[newTask._id] = newTask;
-            console.log(objOfTasks);
 
             return { ...newTask };
+      }
+
+      function onDeleteHandler({ target }){
+      if(target.classList.contains('delete-btn'));{
+
+      const parent = target.closest('[data-task-id]');
+      const id = parent.dataset.taskId;
+      console.log(id);
+      const confirmed = deleteTask(id);
+      deleteTaskFromHtml(confirmed, parent);
+    }
+      }
+
+      function deleteTaskFromHtml(confirmed, el) {
+        if(!confirmed) return;
+        el.remove();
+      }
+
+      function deleteTask(id) {
+        const { title } = objOfTasks[id];
+        const isConfirm = confirm(`Вы уверенны что хотите удалить задачу: ${title} ?`);
+        if(!isConfirm) return isConfirm;
+
+        delete objOfTasks[id];
+        ifNoTaskLeft(objOfTasks);
+        return isConfirm;
+      }
+
+      function ifNoTaskLeft(objTasks) {
+        if(Object.keys(objTasks) == 0){
+          const p = document.createElement('p');
+          p.textContent = 'Список задач пуст';
+          listContainer.appendChild(p);
+          return;
+        }
+        if(Object.keys(objTasks) == 1){
+          const p = document.querySelector('.tasks-list-section .list-group > p');
+          p.remove();
+          return;}
       }
   })(tasks);
   
