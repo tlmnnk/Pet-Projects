@@ -55,8 +55,12 @@ const tasks = [
                 console.error('Передайте список задач');
                 return;}
 
-         const fragment = document.createDocumentFragment();    
+         const fragment = document.createDocumentFragment(); 
+         console.log(Object.values(tasksList));
+            
             Object.values(tasksList).forEach(task => {
+                console.log(task);
+                
                 const li = listItemTemplate(task);
                 fragment.appendChild(li);
             });
@@ -90,12 +94,21 @@ const tasks = [
               'ml-auto',
               'delete-btn');
 
+        deleteBtn.addEventListener('click', deleteTask);
+
         li.appendChild(span);
         li.appendChild(deleteBtn);
         li.appendChild(article);
-
+        console.log(li);
+        
         return li;
       }
+
+    function deleteTask(e) {
+        e.preventDefault();
+        this.parentNode.remove();
+        
+    }
       
 
       function onFormSubmit(e){
