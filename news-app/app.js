@@ -1,3 +1,4 @@
+// jshint esversion: 6
 // Custom Http Module
 function customHttp() {
   return {
@@ -56,7 +57,68 @@ function customHttp() {
 // Init http module
 const http = customHttp();
 
+const newsService = (function(){
+  const apiKey = 'c4f7a716ee7f49bd93967a2c730fcfe2';
+  const apiUrl = 'https://newsapi.org/v2';
+
+  return {
+    topHedline(counrty = 'ua', cb) {
+      http.get(
+        `${apiUrl}/top-headlines?country=${counrty}&apiKey=${apiKey}`,
+        cb
+        );
+    },
+    everything(query, cb) {
+      http.get(`${apiUrl}/everything?q=${query}&apiKey=${apiKey}`,
+      cb);
+    }
+  };
+
+})();
+
+
+
 //  init selects
 document.addEventListener('DOMContentLoaded', function() {
   M.AutoInit();
+  loadNews();
 });
+
+//Load News function
+
+function loadNews() {
+  newsService.topHedline('ua', onGetResponce);
+}
+
+// function fro getting response for server
+
+function onGetResponce(err, res) {
+  renderNews(res.articles);
+}
+
+//function render news
+
+function renderNews(news) {
+  const newsContainer = document.querySelector('.news-container .row');
+
+  news.forEach(newsItem => {
+    const el = newsTemplate(newsItem);
+  });
+}
+
+// news Item template function 
+
+function newsTemplate({ urlToImage, title, url, description }) {
+  console.log(news);
+
+  return `
+  <div class="col s12">
+    <div class="card">
+      <div class="card-image">
+        <img src=${urlToImage}>
+        <span class="card-title">${title || ''}<span>
+      </div>
+    </div>
+  </div>
+  `
+}
