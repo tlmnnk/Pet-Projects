@@ -27,7 +27,7 @@
 // }).then(clientData => console.log(clientData));
 
 
-function getData(cb) {
+/* function getData(cb) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
     
@@ -50,7 +50,7 @@ function createPost(body, cb) {
     xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
         
     xhr.send(JSON.stringify(body));
-    }
+    } */
 
 
 function myHttpRequest({method, url} = {}, cb) {

@@ -80,7 +80,7 @@ const newsService = (function(){
 
 //  init selects
 document.addEventListener('DOMContentLoaded', function() {
-  M.AutoInit();
+  M.AutoInit(); // инит селектов чтобы они выглядели как в materialize
   loadNews();
 });
 
