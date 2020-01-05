@@ -62,7 +62,7 @@ const newsService = (function(){
   const apiUrl = 'https://newsapi.org/v2';
 
   return {
-    topHedline(counrty = 'ua', cb) {
+    topHedline(counrty = 'ru', cb) {
       http.get(
         `${apiUrl}/top-headlines?country=${counrty}&apiKey=${apiKey}`,
         cb
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //Load News function
 
 function loadNews() {
-  newsService.topHedline('ua', onGetResponce);
+  newsService.topHedline('ru', onGetResponce);
 }
 
 // function fro getting response for server
