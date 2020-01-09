@@ -159,3 +159,20 @@ myHttp.post(
         console.log(res);
     } 
 );
+
+const promise = new Promise((reject, resolve) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+                
+    xhr.addEventListener('load', () => {
+    if (Math.floor(xhr.status / 100) !== 2) {
+        reject('Error. Status code: ' + xhr.status, xhr);
+        return;
+    }
+    const response = JSON.parse(xhr.responseText);
+    resolve(null, response); }
+  });
+
+
+promise.then(x => console.log(x));
+)

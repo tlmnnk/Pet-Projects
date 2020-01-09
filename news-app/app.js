@@ -77,40 +77,73 @@ const newsService = (function(){
 })();
 
 
+//Elements
+
+const form = document.forms['newsControls'];
+const countrySelect = form.elements['country'];
+const searchInput = form.elements['search'];
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  loadNews();
+});
+
 
 //  init selects
 document.addEventListener('DOMContentLoaded', function() {
   M.AutoInit(); // инит селектов чтобы они выглядели как в materialize
-  loadNews();
 });
 
 //Load News function
 
 function loadNews() {
-  newsService.topHedline('ru', onGetResponce);
+  showLoader();
+  const country = countrySelect.value;
+  const searchText = searchInput.value;
+  if(!searchText) {
+    newsService.topHedline(country, onGetResponce);
+  } else {
+    newsService.everything(searchText, onGetResponce);
+  }
+  searchInput.value = '';
 }
 
 // function fro getting response for server
 
 function onGetResponce(err, res) {
+  removePreloader();
+  if(err) {
+    showAlert(err, 'error-msg');
+    return;
+  }
+  if(!res.articles.length) {
+    //show empty message
+    return;
+  }
+
   renderNews(res.articles);
 }
 
 //function render news
 
 function renderNews(news) {
-  const newsContainer = document.querySelector('.news-container .row');
+  const newsContainer = document.querySelector('.grid-container');
 
+  if(newsContainer.children.length) {
+    clearContainer(newsContainer);
+  }
+
+  let fragment = '';
   news.forEach(newsItem => {
     const el = newsTemplate(newsItem);
+    fragment += el;
   });
+  newsContainer.insertAdjacentHTML('afterbegin', fragment);
 }
 
 // news Item template function 
 
 function newsTemplate({ urlToImage, title, url, description }) {
-  console.log(news);
-
   return `
   <div class="col s12">
     <div class="card">
@@ -118,7 +151,42 @@ function newsTemplate({ urlToImage, title, url, description }) {
         <img src=${urlToImage}>
         <span class="card-title">${title || ''}<span>
       </div>
+      <div class="card-content">
+        <p>${description || ''}</p>
+      </div>
+      <div class="card-action">
+      <a href="${url}">Read more</a>
+    </div>
     </div>
   </div>
-  `
+  `;
+}
+
+function showAlert(msg, type = 'success') {
+  M.toast({html: msg, classes: type});
+}
+
+function clearContainer(container) {
+
+  let child = container.lastElementChild;
+
+  while(child) {
+    container.removeChild(child);
+    child = container.lastElementChild;
+  }
+}
+
+function showLoader() {
+  document.body.insertAdjacentHTML('afterbegin',
+  `  <div class="progress">
+  <div class="indeterminate"></div>
+</div>`
+  );
+}
+
+function removePreloader() {
+  const loader = document.querySelector('.progress');
+  if(loader) {
+    loader.remove();
+  }
 }
