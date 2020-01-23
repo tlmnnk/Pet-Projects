@@ -6,12 +6,12 @@ import 'materialize-css/dist/js/materialize.min.js';
 const select = document.querySelector('select');
 M.FormSelect.init(select);
 
-
 export function getSelectInstance(elem) {
     return M.FormSelect.getInstance(elem);
 }
 
 //init Autocomplete
+
 const autocomplete = document.querySelectorAll('.autocomplete');
 M.Autocomplete.init(autocomplete);
 
