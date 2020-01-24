@@ -10,12 +10,15 @@ class Locations {
     const response = await Promise.all([
       this.api.countries(),
       this.api.cities(),
+      this.api.airlines()
     ]);
 
-    const [countries, cities] = response;
+    const [countries, cities, airlines] = response;
     this.countries = this.serializeCountries(countries);
     this.cities = this.serializeCities(cities);
     this.citiesAutocompleteList = this.createShortCitiesList(this.cities);
+    console.log(airlines);
+    
     return response;
   }
 
@@ -27,6 +30,11 @@ class Locations {
       acc[key] = null;
       return acc;
     }, {});
+  }
+
+  //
+  getCityCodeByKey(key) {
+    return this.cities[key].code;
   }
 
   serializeCountries(countries) {
@@ -52,8 +60,10 @@ class Locations {
     return this.countries[code].name;
   }
 
-  getCitiesByCountryCode(code) {
-    return this.cities.filter(city => city.country_code === code);
+  async fetchTickets(params) {
+    const response = await this.api.prices(params);
+    console.log(response);
+    
   }
 }
 

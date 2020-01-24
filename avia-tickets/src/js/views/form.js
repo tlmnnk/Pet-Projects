@@ -14,7 +14,7 @@ class FormUI {
     }
 
     get form() {
-        return this.$form;
+        return this._form;
     }
 
     get originValue() {
