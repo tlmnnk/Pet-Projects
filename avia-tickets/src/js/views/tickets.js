@@ -22,7 +22,7 @@ class TicketsUI {
             fragment += template;
         });
 
-        this.container.insertAdjacentElement('afterbegin', fragment);
+        this.container.insertAdjacentHTML('afterbegin', fragment);
     }
 
     clearContainer() {

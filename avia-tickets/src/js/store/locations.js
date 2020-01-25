@@ -78,7 +78,7 @@ class Locations {
       const full_name = `${city_name},${country_name}`;
       acc[city.code] = {
         ...city,
-        country_code,
+        country_name,
         full_name
       };
       return acc;
